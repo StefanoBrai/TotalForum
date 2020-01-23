@@ -14,7 +14,7 @@ namespace TotalForum.Model
         public string Password { get; set; }
         public List<Post> Posts { get; set; }
         public DateTime Dob { get; set; }
-        public int PostCount => Posts.Count;
+        //public int PostCount => Posts.Count;
 
         //public User(int id, string userName, string email, string password, List<Post> posts, DateTime dob)
         //{
@@ -34,20 +34,6 @@ namespace TotalForum.Model
 
         public static bool CheckMail(string mail)
         {
-            //try
-            //{
-            //    var addr = new System.Net.Mail.MailAddress(mail);
-            //    return addr.Address == mail;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
-
-
-            //return new EmailAddressAttribute().IsValid(mail);
-
-
             string validEmailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
             + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
             + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
