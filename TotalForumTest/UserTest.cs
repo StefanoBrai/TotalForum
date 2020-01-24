@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TotalForum.Model;
 using Xunit;
+using FluentAssertions;
 
 namespace TotalForumTest
 {
@@ -46,7 +47,9 @@ namespace TotalForumTest
 
             var newUser = new User(id, userName, email, password, posts, dob);
 
-            Assert.IsType<User>(newUser);
+            //Assert.IsType<User>(newUser);
+
+            newUser.Should().BeOfType<User>();
         }
 
         [Fact]
@@ -61,11 +64,12 @@ namespace TotalForumTest
             var newUser = new User(id, userName, email, password, posts, dob);
             int expectedPostCount = 1;
 
-
             int actualPostCount = newUser.PostCount;
 
-            Assert.Equal<int>(expectedPostCount, actualPostCount);
+            //Assert.Equal<int>(expectedPostCount, actualPostCount);
 
+            //Fluent assertion
+            actualPostCount.Should().Be(expectedPostCount);
         }
 
 
@@ -84,8 +88,9 @@ namespace TotalForumTest
 
             int actualPostCount = newUser.PostCountMethod();
 
-            Assert.Equal<int>(expectedPostCount, actualPostCount);
+            //Assert.Equal<int>(expectedPostCount, actualPostCount);
 
+            actualPostCount.Should().Be(expectedPostCount);
         }
 
         [Theory]
@@ -98,26 +103,28 @@ namespace TotalForumTest
         {
             bool ActualIsMail = User.CheckMail(mail);
 
-            Assert.Equal<bool>(expectedIsMail, ActualIsMail);
+            //Assert.Equal<bool>(expectedIsMail, ActualIsMail);
+
+            ActualIsMail.Should().BeTrue();
         }
 
-        [Fact]
-        public void TestDayToBirthdate()
-        {
-            int id = 4;
-            string userName = "pippoHot";
-            string email = "pippo@hotmail.com";
-            string password = "qwerty1";
-            List<Post> posts = new List<Post>();
-            DateTime dob = new DateTime(1980, 1, 20);
-            var newUser = new User(id, userName, email, password, posts, dob);
-            int expectedDay = 365;
+        //[Fact]
+        //public void TestDayToBirthdate()
+        //{
+        //    int id = 4;
+        //    string userName = "pippoHot";
+        //    string email = "pippo@hotmail.com";
+        //    string password = "qwerty1";
+        //    List<Post> posts = new List<Post>();
+        //    DateTime dob = new DateTime(1980, 1, 20);
+        //    var newUser = new User(id, userName, email, password, posts, dob);
+        //    int expectedDay = 365;
 
-            int actualDay = newUser.DayToBirthdate();
+        //    int actualDay = newUser.DayToBirthdate();
 
-            Assert.Equal<int>(expectedDay, actualDay);
+        //    Assert.Equal<int>(expectedDay, actualDay);
 
-        }
+        //}
 
 
         [Theory]
@@ -127,8 +134,11 @@ namespace TotalForumTest
 
             int actualDays = user.DayToBirthdate();
 
-            Assert.Equal<int>(expectedDays, actualDays);
+            //Assert.Equal<int>(expectedDays, actualDays);
 
+            actualDays.Should().Equals(expectedDays);
         }
+
+
     }
 }

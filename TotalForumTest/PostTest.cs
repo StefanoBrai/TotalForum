@@ -2,6 +2,7 @@
 using TotalForum.Model;
 using Xunit;
 using System.Collections.Generic;
+using FluentAssertions;
 
 namespace TotalForumTest
 {
@@ -77,6 +78,15 @@ namespace TotalForumTest
             int actualWordCount = Post.WordsCount(text);
 
             Assert.Equal<int>(expectedWordCount, actualWordCount);
+        }
+
+        [Theory]
+        [InlineData(new string[] {"angela", "mario", "luigi"}, 3)]
+        public void TestSorting(string[] stringArray, int expectedCount)
+        {
+            var actualArray = Post.Sorting(stringArray);
+            actualArray.Should().BeInAscendingOrder();
+            actualArray.Length.Should().Be(expectedCount);   
         }
     }
 }

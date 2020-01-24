@@ -13,6 +13,10 @@ namespace TotalForum.Model
         public DateTime Date { get; set; }
         public int UserId { get; set; }
 
+        public Post()
+        {
+        }
+
         public Post(int id, string title, string text, DateTime date, int userId)
         {
             Id = id;
@@ -38,6 +42,11 @@ namespace TotalForum.Model
         public int TextWordsCount()
         {
             return WordsCount(this.Text);
+        }
+
+        public static string[] Sorting(string[] stringArray)
+        {
+            return stringArray.Where(s => s.ToLower()[0].Equals('a')).OrderBy(s => s).ToArray();
         }
     }
 }

@@ -28,6 +28,9 @@ namespace TotalForum
         {
             services.AddControllers();
             services.AddDbContext<TotalForumContext>();
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+            services.AddTransient<IUserRepository, EFUserRepository>();
+            services.AddTransient<IPostRepository, EFPostRepository>();
 
             services.AddCors(options =>
             {

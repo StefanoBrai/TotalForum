@@ -14,17 +14,21 @@ namespace TotalForum.Model
         public string Password { get; set; }
         public List<Post> Posts { get; set; }
         public DateTime Dob { get; set; }
-        //public int PostCount => Posts.Count;
+        public int PostCount => Posts.Count;
 
-        //public User(int id, string userName, string email, string password, List<Post> posts, DateTime dob)
-        //{
-        //    Id = id;
-        //    UserName = userName;
-        //    Email = email;
-        //    Password = password;
-        //    Posts = posts;
-        //    Dob = dob;
-        //}
+        public User()
+        {
+        }
+
+        public User(int id, string userName, string email, string password, List<Post> posts, DateTime dob)
+        {
+            Id = id;
+            UserName = userName;
+            Email = email;
+            Password = password;
+            Posts = posts;
+            Dob = dob;
+        }
 
         public int PostCountMethod()
         {
@@ -52,5 +56,6 @@ namespace TotalForum.Model
             }
             return (nextBirthday - DateTime.Today).Days;
         }
+
     }
 }
